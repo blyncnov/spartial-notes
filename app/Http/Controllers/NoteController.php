@@ -14,7 +14,7 @@ class NoteController extends Controller
     {
 
         // All Notes
-        $notes = Note::paginate(10);
+        $notes = Note::with("user")->paginate(10);
 
         return view("notes.index", [
             "notes" => $notes
@@ -26,7 +26,7 @@ class NoteController extends Controller
      */
     public function create()
     {
-        //
+        return view("notes.create");
     }
 
     /**
@@ -40,25 +40,25 @@ class NoteController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(string $id)
+    public function show(Note $note)
     {
-        //
+        return view("notes.show", ["note" => $note]);
     }
 
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(string $id)
+    public function edit(Note $note)
     {
-        //
+        return view("notes.edit", ["note" => $note]);
     }
 
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, string $id)
+    public function update(Request $request, Note $note)
     {
-        //
+        return view("notes.show", ["note" => $note]);
     }
 
     /**
