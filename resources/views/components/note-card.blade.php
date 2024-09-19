@@ -1,4 +1,4 @@
-<div class="w-full h-full relative">
+<div class="w-full h-full relative" x-data="{ isOpen: false }">
     <div class="w-full h-full shadow-sm p-4 rounded-lg flex flex-col gap-2 justify-between bg-orange-300">
         <div class="w-full flex flex-col gap-1">
             <h2 class="text-xl font-bold">{{ $note->n_title }}</h2>
@@ -17,15 +17,17 @@
 
         </div>
 
-        <a href="{{ route('notes.show', $note) }}" class="w-auto">
-            <button type="button"
-                class="text-base text-white border bg-orange-500 border-b-0 border-white/10 py-1.5 px-3 rounded-lg shadow scale-100 hover:scale-105 duration-300 transition-all">
-                Show note content
-            </button>
-        </a>
+        <div class="flex">
+            <a href="{{ route('notes.show', $note) }}" class="w-auto">
+                <button type="button"
+                    class="text-base text-white border bg-orange-500 border-b-0 border-white/10 py-1.5 px-3 rounded-lg shadow scale-100 hover:scale-105 duration-300 transition-all">
+                    Show note content
+                </button>
+            </a>
+        </div>
     </div>
 
-    @if ($note->n_visibility == 'public')
+    @if ($note->n_visibility === 'private')
         <div>
             <div
                 class="w-full h-full absolute top-0 left-0 right-0 bg-orange-400 rounded-lg flex justify-center items-center">
@@ -50,8 +52,6 @@
         </div>
     @endif
 
-    <h2 x-show="isOpen">He</h2>
-
-    {{-- <x-unlock-modal /> --}}
+    <x-unlock-modal :$note />
 
 </div>

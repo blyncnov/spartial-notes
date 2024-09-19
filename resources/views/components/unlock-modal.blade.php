@@ -1,4 +1,5 @@
-<div x-show="isOpen" class="w-full h-full fixed top-0 right-0 left-0 bg-black/70 flex justify-center items-center"
+<div x-show="isOpen"
+    class="w-full h-full fixed top-0 right-0 left-0 bg-black/70 flex justify-center items-center z-[999999]"
     x-transition:enter="transition ease-out duration-300" x-transition:enter-start="opacity-0"
     x-transition:enter-end="opacity-100" x-transition:leave="transition ease-in duration-200"
     x-transition:leave-start="opacity-100" x-transition:leave-end="opacity-0">
@@ -8,7 +9,9 @@
                 <h3>You can use the Password associated with this note to unlock the note content.</h3>
             </div>
 
-            {{-- <p class="text-sm text-gray-600" x-text="`Latitude: {{ $note->n_title }}`"></p> --}}
+            <p class="text-sm text-gray-600">
+                Note Title: {{ $note->n_title }} <br> Note Password: {{ $note->n_passkey }}
+            </p>
 
             <div>
                 <form action="" method="post" class="w-full flex flex-col gap-2">

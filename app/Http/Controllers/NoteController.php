@@ -14,7 +14,7 @@ class NoteController extends Controller
     {
 
         // All Notes
-        $notes = Note::with("user")->paginate(10);
+        $notes = Note::with("user")->get();
 
         return view("notes.index", [
             "notes" => $notes
@@ -34,7 +34,19 @@ class NoteController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $note_fields = $request->validate([
+            "n_title" => "required|max:225",
+            "n_content" => "required|max:225",
+            "n_passkey" => "sometimes",
+            "n_description" => "required|max:225",
+            "n_latitude" => "required",
+            "n_longitude" => "required",
+            "n_visibility" => "required",
+        ]);
+
+        Note::create([...$note_fields, "user_id" => 1]);
+
+        return redirect()->route(("notes.index"));
     }
 
     /**
@@ -58,14 +70,28 @@ class NoteController extends Controller
      */
     public function update(Request $request, Note $note)
     {
-        return view("notes.show", ["note" => $note]);
+        $note_fields = $request->validate([
+            "n_title" => "required|max:225",
+            "n_content" => "required|max:225",
+            "n_passkey" => "sometimes",
+            "n_description" => "required|max:225",
+            "n_latitude" => "required",
+            "n_longitude" => "required",
+            "n_visibility" => "required",
+        ]);
+
+        $note->update($note_fields);
+
+        return redirect()->route("notes.show", $note);
     }
 
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(string $id)
+    public function destroy(Note $note)
     {
-        //
+        $note->delete();
+
+        return redirect()->route("notes.index", $note);
     }
 }

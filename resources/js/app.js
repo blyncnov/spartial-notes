@@ -1,14 +1,16 @@
 import "./bootstrap";
 
-const elementTest = document.getElementsByTagName("p");
+var searchInput = document.querySelector('input[name="search_input"]');
 
 console.log("hello boss");
-console.log(elementTest);
 
-Alpine.data("dropdown", () => ({
-    open: false,
+document.addEventListener("DOMContentLoaded", function () {
+    var autocomplete = new google.maps.places.Autocomplete(searchInput, {
+        types: ["geocode"],
+        componentRestrictions: { country: "US" },
+    });
 
-    toggle() {
-        this.open = !this.open;
-    },
-}));
+    autocomplete.addListener("place_changed", function () {
+        var near_place = autocomplete.getPlace();
+    });
+});

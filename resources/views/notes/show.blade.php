@@ -41,8 +41,9 @@
                     </button>
                 </a>
 
-                <form action="" method="post" class="w-auto flex flex-col gap-3">
+                <form action="{{ route("notes.destroy", $note) }}" method="post" class="w-auto flex flex-col gap-3">
                     @csrf()
+                    @method("DELETE")
 
                     <button type="submit"
                         class="text-base text-white border bg-red-700 border-b-0 border-white/10 py-1.5 px-6 rounded-lg shadow">
