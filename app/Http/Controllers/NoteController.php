@@ -10,11 +10,25 @@ class NoteController extends Controller
     /**
      * Display a listing of the resource.
      */
-    public function index()
+    public function index(Request $request)
     {
 
-        // All Notes
-        $notes = Note::with("user")->get();
+        $n_latitude = $request->query("lat");
+        $n_longitude = $request->query("lng");
+
+        // Define a radius for nearby notes (in kilometers, for example)
+        $radius = 10;
+
+        $notes = Note::selectRaw(
+            "*,
+            (6371 * acos(cos(radians(?)) * cos(radians(n_latitude))
+            * cos(radians(n_longitude) - radians(?)) + sin(radians(?))
+            * sin(radians(n_latitude)))) AS distance",
+            [$n_latitude, $n_longitude, $n_latitude]
+        )
+        ->having("distance", "<", $radius)
+        ->with("user")
+        ->get();
 
         return view("notes.index", [
             "notes" => $notes
@@ -94,4 +108,8 @@ class NoteController extends Controller
 
         return redirect()->route("notes.index", $note);
     }
+
 }
+
+
+// http://127.0.0.1:8000/notes?lat=7.2229548&lng=3.4546532

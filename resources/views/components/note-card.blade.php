@@ -44,9 +44,9 @@
                     </div>
 
                     <button type="button" @click="isOpen = true"
-                        class="text-base text-white border bg-orange-700 border-b-0 border-white/10 py-1.5 px-3 rounded-lg shadow scale-100 hover:scale-105 duration-300 transition-all">
-                        Unlock note content
-                    </button>
+                    class="text-base text-white border bg-orange-700 border-b-0 border-white/10 py-1.5 px-3 rounded-lg shadow scale-100 hover:scale-105 duration-300 transition-all">
+                    Unlock note content
+                </button>
                 </div>
             </div>
         </div>
