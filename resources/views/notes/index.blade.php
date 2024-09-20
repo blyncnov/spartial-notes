@@ -7,7 +7,9 @@
             @forelse ($notes as $note)
                 <x-note-card :note="$note" />
             @empty
-                <p>No Notes Found</p>
+              <div>
+                    <p>No Notes Found Nearby</p>
+              </div>
             @endforelse
 
         </div>
