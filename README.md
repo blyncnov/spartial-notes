@@ -1,66 +1,127 @@
-<p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400" alt="Laravel Logo"></a></p>
 
-<p align="center">
-<a href="https://github.com/laravel/framework/actions"><img src="https://github.com/laravel/framework/workflows/tests/badge.svg" alt="Build Status"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/dt/laravel/framework" alt="Total Downloads"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/v/laravel/framework" alt="Latest Stable Version"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/l/laravel/framework" alt="License"></a>
-</p>
 
-## About Laravel
+# Spartial Notes - Location-Based Note-Taking Application
 
-Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:
+## Description
+**Spartial Notes** is a note-taking application with a unique twist: it integrates geolocation to enhance user experience. Users can create public or private notes, and by leveraging geolocation data, they can find notes created by others based on proximity. The app supports privacy with passkey-protected private notes, ensuring that sensitive content remains secure.
 
-- [Simple, fast routing engine](https://laravel.com/docs/routing).
-- [Powerful dependency injection container](https://laravel.com/docs/container).
-- Multiple back-ends for [session](https://laravel.com/docs/session) and [cache](https://laravel.com/docs/cache) storage.
-- Expressive, intuitive [database ORM](https://laravel.com/docs/eloquent).
-- Database agnostic [schema migrations](https://laravel.com/docs/migrations).
-- [Robust background job processing](https://laravel.com/docs/queues).
-- [Real-time event broadcasting](https://laravel.com/docs/broadcasting).
+## Features
+- **Geolocation-Enabled Notes**: Automatically fetches the user's latitude and longitude to help find notes nearby.
+- **Public and Private Notes**: Users can create either public notes visible to everyone or private notes accessible only via a passkey.
+- **Simple, Intuitive Interface**: A clean UI built using Tailwind CSS and Alpine.js to ensure a smooth and responsive user experience.
+- **Privacy and Security**: Private notes require a passkey for access, adding an extra layer of security.
 
-Laravel is accessible, powerful, and provides tools required for large, robust applications.
+## Technologies Used
+- **Backend**: Laravel (PHP Framework)
+- **Frontend**: Blade Templates, Tailwind CSS, Alpine.js
+- **Geolocation**: Google Maps JavaScript API
+- **Database**: MySQL or any supported database by Laravel
+- **Version Control**: Git
 
-## Learning Laravel
+## Installation and Setup
 
-Laravel has the most extensive and thorough [documentation](https://laravel.com/docs) and video tutorial library of all modern web application frameworks, making it a breeze to get started with the framework.
+### Prerequisites
+- PHP 8.x
+- Composer
+- Node.js and npm
+- MySQL or any other database supported by Laravel
+- Google Maps API Key (for geolocation services)
 
-You may also try the [Laravel Bootcamp](https://bootcamp.laravel.com), where you will be guided through building a modern Laravel application from scratch.
+### Steps to Install
 
-If you don't feel like reading, [Laracasts](https://laracasts.com) can help. Laracasts contains thousands of video tutorials on a range of topics including Laravel, modern PHP, unit testing, and JavaScript. Boost your skills by digging into our comprehensive video library.
+1. **Clone the repository**:
+   ```bash
+   git clone https://github.com/yourusername/spartial-notes.git
+   ```
 
-## Laravel Sponsors
+2. **Navigate to the project directory**:
+   ```bash
+   cd spartial-notes
+   ```
 
-We would like to extend our thanks to the following sponsors for funding Laravel development. If you are interested in becoming a sponsor, please visit the [Laravel Partners program](https://partners.laravel.com).
+3. **Install dependencies**:
+   ```bash
+   composer install
+   npm install
+   ```
 
-### Premium Partners
+4. **Set up the `.env` file**:
+   Copy the `.env.example` file and configure your environment:
+   ```bash
+   cp .env.example .env
+   ```
+   Set your database configuration and **Google Maps API Key** in the `.env` file:
+   ```env
+   DB_CONNECTION=mysql
+   DB_HOST=127.0.0.1
+   DB_PORT=3306
+   DB_DATABASE=your_database_name
+   DB_USERNAME=your_database_username
+   DB_PASSWORD=your_database_password
 
-- **[Vehikl](https://vehikl.com/)**
-- **[Tighten Co.](https://tighten.co)**
-- **[WebReinvent](https://webreinvent.com/)**
-- **[Kirschbaum Development Group](https://kirschbaumdevelopment.com)**
-- **[64 Robots](https://64robots.com)**
-- **[Curotec](https://www.curotec.com/services/technologies/laravel/)**
-- **[Cyber-Duck](https://cyber-duck.co.uk)**
-- **[DevSquad](https://devsquad.com/hire-laravel-developers)**
-- **[Jump24](https://jump24.co.uk)**
-- **[Redberry](https://redberry.international/laravel/)**
-- **[Active Logic](https://activelogic.com)**
-- **[byte5](https://byte5.de)**
-- **[OP.GG](https://op.gg)**
+   GOOGLE_MAPS_API_KEY=your-google-maps-api-key-here
+   ```
 
-## Contributing
+5. **Generate application key**:
+   ```bash
+   php artisan key:generate
+   ```
 
-Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](https://laravel.com/docs/contributions).
+6. **Run migrations**:
+   ```bash
+   php artisan migrate
+   ```
 
-## Code of Conduct
+7. **Build frontend assets**:
+   ```bash
+   npm run build
+   ```
 
-In order to ensure that the Laravel community is welcoming to all, please review and abide by the [Code of Conduct](https://laravel.com/docs/contributions#code-of-conduct).
+8. **Serve the application**:
+   ```bash
+   php artisan serve
+   ```
 
-## Security Vulnerabilities
+   The app will be accessible at `http://127.0.0.1:8000`.
 
-If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell via [taylor@laravel.com](mailto:taylor@laravel.com). All security vulnerabilities will be promptly addressed.
+## Usage
+
+### Create a New Note
+1. Navigate to the "Create New Note" button on the homepage.
+2. Choose the note visibility (Public or Private).
+3. If the note is marked as Private, enter a passkey for security.
+4. Save the note.
+
+### Find Nearby Notes
+1. The application will automatically fetch your location (latitude and longitude) upon loading.
+2. Click the "Find Nearby Notes" button to view notes based on proximity.
+
+### Geolocation Setup
+The app uses the **Google Maps API** to fetch user coordinates. Ensure your Google Maps API key is added in the `.env` file to enable this feature.
+
+### Note Privacy
+- **Public Notes**: Can be viewed by anyone.
+- **Private Notes**: Protected by a passkey. Only those with the correct passkey can view the note.
+
+## Google Maps API Key
+To use the location features, you'll need a Google Maps API key:
+1. Go to the [Google Cloud Console](https://console.cloud.google.com/).
+2. Enable the **Google Maps JavaScript API**.
+3. Create an API key and restrict its usage to your domain or IP.
+4. Add the API key to your `.env` file under `GOOGLE_MAPS_API_KEY`.
+
+## Security
+- **Environment Variables**: Sensitive information such as API keys and database credentials are stored in the `.env` file, which is not included in version control.
+- **Passkey for Private Notes**: Users can create private notes that require a passkey to access, enhancing security.
+
+## Known Issues
+- If geolocation fails, the app will alert the user that their browser does not support geolocation.
+- Currently, there is no support for collaborative note-taking or real-time updates.
+
+## Future Enhancements
+- **Enhanced Note Filters**: Allow filtering by proximity distance.
+- **Customizable Note Access**: Implement features to allow access to notes by user groups or friends.
 
 ## License
+This project is licensed under the MIT License. See the [LICENSE](LICENSE) file for details.
 
-The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
