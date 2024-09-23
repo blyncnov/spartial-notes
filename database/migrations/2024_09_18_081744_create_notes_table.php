@@ -18,11 +18,13 @@ return new class extends Migration {
 
             $table->string("n_title");
             $table->string("n_content");
-            $table->string("n_passkey");
             $table->string("n_description");
+            $table->string("n_passkey")->nullable();
+            $table->string("n_geolocation");
             $table->decimal('n_latitude', 10, 8);
             $table->decimal('n_longitude', 11, 8);
             $table->enum("n_visibility", ["private", "public"])->default("public");
+            $table->enum("n_label", ["urgent", "simple"])->default("simple");
 
             $table->timestamps();
         });

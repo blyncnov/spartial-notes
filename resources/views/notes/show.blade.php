@@ -12,14 +12,23 @@
                         <path d="M6 8L2 12L6 16" />
                         <path d="M2 12H22" />
                     </svg>
-
                     <p>Go back</p>
                 </a>
             </div>
 
+         <div class="flex gap-4 items-center">
             <h2 class="text-2xl font-bold">{{ $note->n_title }}</h2>
-            <h4 class="opacity-90">{{ $note->n_description }}</h4>
+            <div type="button"
+            @class([
+                'text-base text-white border-2 px-2 py-0.5 rounded-lg shadow',
+                'bg-red-500 border-red-700' => $note->n_label == "urgent",
+                'bg-green-500 border-green-700' => $note->n_label == "simple",
+            ])
+         >
+                {{ $note->n_label }}</div>
+         </div>
 
+            <h4 class="opacity-90">{{ $note->n_description }}</h4>
             <p class="opacity-70">{{ $note->n_content }}</p>
 
             <div class="w-full flex gap-2 items-center opacity-90 py-2">

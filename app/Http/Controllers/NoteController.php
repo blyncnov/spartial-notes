@@ -50,11 +50,13 @@ class NoteController extends Controller
     {
         $note_fields = $request->validate([
             "n_title" => "required|max:225",
-            "n_content" => "required|max:225",
+            "n_content" => "required",
             "n_passkey" => "sometimes",
             "n_description" => "required|max:225",
+            "n_geolocation"=> "required",
             "n_latitude" => "required",
             "n_longitude" => "required",
+            "n_label" => "required",
             "n_visibility" => "required",
         ]);
 
@@ -86,11 +88,13 @@ class NoteController extends Controller
     {
         $note_fields = $request->validate([
             "n_title" => "required|max:225",
-            "n_content" => "required|max:225",
+            "n_content" => "required",
             "n_passkey" => "sometimes",
             "n_description" => "required|max:225",
+            "n_geolocation"=> "required",
             "n_latitude" => "required",
             "n_longitude" => "required",
+            "n_label" => "required",
             "n_visibility" => "required",
         ]);
 
@@ -111,5 +115,3 @@ class NoteController extends Controller
 
 }
 
-
-// http://127.0.0.1:8000/notes?lat=7.2229548&lng=3.4546532

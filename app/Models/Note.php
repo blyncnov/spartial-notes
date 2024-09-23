@@ -16,9 +16,11 @@ class Note extends Model
         'n_content',
         'n_passkey',
         'n_description',
+        'n_geolocation',
         'n_latitude',
         'n_longitude',
         'n_visibility',
+        'n_label',
         'user_id',
     ];
 
