@@ -3,6 +3,9 @@
 # Spartial Notes - Location-Based Note-Taking Application
 
 ## Description
+
+- Leave a note at your favorite location and it will be waiting for you the next time you visit!
+
 **Spartial Notes** is a note-taking application with a unique twist: it integrates geolocation to enhance user experience. Users can create public or private notes, and by leveraging geolocation data, they can find notes created by others based on proximity. The app supports privacy with passkey-protected private notes, ensuring that sensitive content remains secure.
 
 ## Features
