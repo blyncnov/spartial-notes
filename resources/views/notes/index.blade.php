@@ -2,7 +2,9 @@
 
 @section('content')
     <section class="w-full relative p-4">
-        <div class="w-full grid lg:grid-cols-3 md:grid-cols-2 grid-cols-1 gap-3">
+        <div class="w-full max-w-[97%] md:max-w-[85%] mx-auto flex flex-col gap-8 bg-white rounded-3xl md:p-6 p-4">
+
+        <div class="w-full grid md:grid-cols-2 grid-cols-1 gap-3">
 
             @forelse ($notes as $note)
                 <x-note-card :note="$note" />
@@ -13,9 +15,10 @@
             @endforelse
 
         </div>
+    </div>
 
         <div class="w-full flex md:flex-row flex-col md:gap-5 gap-3 justify-center items-center py-10">
-            <div>
+            <div class="md:w-auto w-full">
                 <button type="button"
                 onclick="reloadPage()"
                     class="w-full text-base text-white border bg-black border-b-0 border-white/10 py-2 px-6 rounded-lg shadow scale-100 hover:scale-105 duration-300 transition-all">
