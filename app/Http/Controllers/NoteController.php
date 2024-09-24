@@ -17,7 +17,7 @@ class NoteController extends Controller
         $n_longitude = $request->query("lng");
 
         // Define a radius for nearby notes (in kilometers, for example)
-        $radius = 10;
+        $radius = 100;
 
         $notes = Note::selectRaw(
             "*,
