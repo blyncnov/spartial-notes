@@ -1,9 +1,9 @@
 @extends('_layout.base')
 
 @section('content')
-    <section class="w-full relative p-6">
-        <div class="w-full flex flex-col gap-8">
-            <div>
+<section class="w-full relative pt-6">
+    <div class="w-full max-w-[90%] md:max-w-[75%] mx-auto flex flex-col gap-8 bg-white rounded-t-3xl py-10 px-6">
+        <div>
                 <h3 class="text-2xl font-medium">Edit Note</h3>
                 <p class="opacity-80 mt-0.5 mb-2">This note will be created and visible only when you are nearby the location set when creating the note!</p>
                 <hr>

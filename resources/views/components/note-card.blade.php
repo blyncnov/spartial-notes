@@ -1,5 +1,5 @@
 <div class="w-full h-full relative" x-data="{ isOpen: false }">
-    <div class="w-full h-full shadow-sm p-4 rounded-lg flex flex-col gap-2 justify-between bg-orange-300">
+    <div class="w-full h-full shadow-sm p-4 rounded-lg flex flex-col gap-2 justify-between bg-white">
         <div class="w-full flex flex-col gap-1">
             <h2 class="text-xl font-bold">{{ $note->n_title }}</h2>
             <p class="opacity-70">{{ $note->n_description }}</p>
@@ -30,7 +30,7 @@
     @if ($note->n_visibility === 'private')
         <div>
             <div
-                class="w-full h-full absolute top-0 left-0 right-0 bg-orange-400 rounded-lg flex justify-center items-center">
+                class="w-full h-full absolute top-0 left-0 right-0 bg-[#f7f6ee] rounded-lg flex justify-center items-center">
                 <div class="w-full flex flex-col justify-center items-center">
                     <svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" viewBox="0 0 24 24"
                         fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
